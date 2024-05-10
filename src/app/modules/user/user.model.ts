@@ -56,3 +56,5 @@ const userSchema = new Schema<User>({
   hobbies: [[String]],
   address: addressSchema,
 });
+
+const User = model<User>("User", userSchema);
