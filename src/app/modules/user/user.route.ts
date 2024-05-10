@@ -5,4 +5,6 @@ const router = express.Router();
 
 //UserCreate Controller func
 
-router.post("/api/users", UserControllers.createUser);
+router.post("/", UserControllers.createUser);
+
+export const UserRouters = router;
