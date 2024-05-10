@@ -1,4 +1,4 @@
-import { Schema, model, connect } from "mongoose";
+import { Schema, model } from "mongoose";
 import { User, address, fullName } from "./user.interface";
 
 const fullNameSchema = new Schema<fullName>({
@@ -53,7 +53,7 @@ const userSchema = new Schema<User>({
     type: Boolean,
     required: true,
   },
-  hobbies: [[String]],
+  hobbies: [String],
   address: addressSchema,
 });
 
