@@ -57,4 +57,4 @@ const userSchema = new Schema<User>({
   address: addressSchema,
 });
 
-const User = model<User>("User", userSchema);
+export const UserModel = model<User>("User", userSchema);
