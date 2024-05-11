@@ -4,10 +4,12 @@ import { User, address, fullName } from "./user.interface";
 const fullNameSchema = new Schema<fullName>({
   firstName: {
     type: String,
+    trim: true,
     required: [true, "First Name is required"],
   },
   lastName: {
     type: String,
+    trim: true,
     required: [true, "Last Name is required"],
   },
 });
@@ -15,14 +17,17 @@ const fullNameSchema = new Schema<fullName>({
 const addressSchema = new Schema<address>({
   street: {
     type: String,
+    trim: true,
     required: [true, "Street adress is required"],
   },
   city: {
     type: String,
+    trim: true,
     required: [true, "City is required"],
   },
   country: {
     type: String,
+    trim: true,
     required: [true, "Country is required"],
   },
 });
@@ -30,6 +35,7 @@ const addressSchema = new Schema<address>({
 const userSchema = new Schema<User>({
   userId: {
     type: Number,
+    trim: true,
     required: true,
     unique: true,
   },
@@ -39,6 +45,7 @@ const userSchema = new Schema<User>({
   },
   password: {
     type: String,
+    trim: true,
     required: [true, "Password is required"],
   },
   fullName: {
@@ -47,10 +54,12 @@ const userSchema = new Schema<User>({
   },
   age: {
     type: Number,
+    trim: true,
     required: [true, "Age is required"],
   },
   email: {
     type: String,
+    trim: true,
     required: [true, "Email is required"],
   },
   isActive: {

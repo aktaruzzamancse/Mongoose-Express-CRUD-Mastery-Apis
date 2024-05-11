@@ -1,12 +1,17 @@
 import { Request, Response } from "express";
 import { UserServices } from "./user.service";
+import { z } from "zod";
+import userVaildationSchema from "./user.zod.validation";
 
 const createUser = async (req: Request, res: Response) => {
   try {
     const user = req.body;
+    //User vaildation using Zod
+
+    const zodParseData = userVaildationSchema.parse(user);
 
     //Calling Createuser Service
-    const result = await UserServices.Createuser(user);
+    const result = await UserServices.Createuser(zodParseData);
 
     //send response
 
