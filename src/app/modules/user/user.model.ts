@@ -30,7 +30,8 @@ const addressSchema = new Schema<address>({
 const userSchema = new Schema<User>({
   userId: {
     type: Number,
-    required: [true, "User Id is required"],
+    required: true,
+    unique: true,
   },
   username: {
     type: String,
