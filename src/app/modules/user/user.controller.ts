@@ -16,7 +16,14 @@ const createUser = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (error) {
-    console.log(error);
+    res.status(500).json({
+      success: false,
+      massage: "Faild to create user!",
+      error: {
+        code: 404,
+        description: error,
+      },
+    });
   }
 };
 
