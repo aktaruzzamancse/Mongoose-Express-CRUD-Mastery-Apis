@@ -72,6 +72,10 @@ const userSchema = new Schema<User>({
     type: addressSchema,
     required: [true, "Address is required"],
   },
+  isDeleted: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 export const UserModel = model<User>("User", userSchema);

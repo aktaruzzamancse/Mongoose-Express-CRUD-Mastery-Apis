@@ -19,4 +19,5 @@ export type User = {
   isActive: boolean;
   hobbies: string[];
   address: address;
+  isDeleted: boolean;
 };

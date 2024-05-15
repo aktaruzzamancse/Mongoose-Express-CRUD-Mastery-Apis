@@ -42,6 +42,7 @@ const userVaildationSchema = z.object({
   isActive: z.boolean().default(true),
   hobbies: z.array(z.string()),
   address: addressVaildationSchema,
+  isDeleted: z.boolean().default(false),
 });
 
 export default userVaildationSchema;
