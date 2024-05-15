@@ -78,4 +78,9 @@ const userSchema = new Schema<User>({
   },
 });
 
+//query middleware
+userSchema.pre("find", function (next) {
+  this.find({ isDeleted: { $eq: false } });
+  next();
+});
 export const UserModel = model<User>("User", userSchema);
