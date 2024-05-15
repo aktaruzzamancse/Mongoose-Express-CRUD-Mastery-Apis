@@ -83,4 +83,9 @@ userSchema.pre("find", function (next) {
   this.find({ isDeleted: { $eq: false } });
   next();
 });
+
+userSchema.pre("findOne", function (next) {
+  this.find({ isDeleted: { $eq: false } });
+  next();
+});
 export const UserModel = model<User>("User", userSchema);
