@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { User, address, fullName } from "./user.interface";
+import { User, address, fullName, orders } from "./user.interface";
 import bcrypt from "bcrypt";
 import config from "../../config";
 
@@ -34,6 +34,24 @@ const addressSchema = new Schema<address>({
   },
 });
 
+const ordersSchema = new Schema<orders>({
+  productName: {
+    type: String,
+    trim: true,
+    required: [true, "ProductName is required"],
+  },
+  price: {
+    type: Number,
+    trim: true,
+    required: [true, "Price is required"],
+  },
+  quantity: {
+    type: Number,
+    trim: true,
+    required: [true, "Quantity is required"],
+  },
+});
+
 const userSchema = new Schema<User>({
   userId: {
     type: Number,
@@ -48,7 +66,6 @@ const userSchema = new Schema<User>({
   password: {
     type: String,
     trim: true,
-    unique: true,
     required: [true, "Password is required"],
   },
   fullName: {
@@ -79,9 +96,10 @@ const userSchema = new Schema<User>({
     type: Boolean,
     default: false,
   },
+  orders: [ordersSchema],
 });
 
-//query middleware
+// query middleware
 userSchema.pre("find", function (next) {
   this.find({ isDeleted: { $eq: false } });
   next();
@@ -102,4 +120,10 @@ userSchema.pre("save", async function (next) {
   );
   next();
 });
+
+userSchema.post("save", async function (doc, next) {
+  doc.password = "";
+  next();
+});
+
 export const UserModel = model<User>("User", userSchema);

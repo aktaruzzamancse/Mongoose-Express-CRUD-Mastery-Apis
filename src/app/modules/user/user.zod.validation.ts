@@ -25,6 +25,20 @@ const addressVaildationSchema = z.object({
     invalid_type_error: "Country must be a string",
   }),
 });
+const ordersVaildationSchema = z.object({
+  productName: z.string({
+    required_error: "Product Name is required",
+    invalid_type_error: "Product Name must be a string",
+  }),
+  price: z.number({
+    required_error: "Price is required",
+    invalid_type_error: "Price must be a number",
+  }),
+  quantity: z.number({
+    required_error: "Quantity is required",
+    invalid_type_error: "Quantity must be a number",
+  }),
+});
 
 const userVaildationSchema = z.object({
   userId: z.number(),
@@ -45,6 +59,7 @@ const userVaildationSchema = z.object({
   hobbies: z.array(z.string()),
   address: addressVaildationSchema,
   isDeleted: z.boolean().default(false),
+  orders: z.array(ordersVaildationSchema),
 });
 
 export default userVaildationSchema;

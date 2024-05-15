@@ -42,7 +42,14 @@ const getAllUsers = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (error) {
-    console.log(error);
+    res.status(500).json({
+      success: false,
+      massage: "Users data not found",
+      error: {
+        code: 404,
+        description: "Users data not found!",
+      },
+    });
   }
 };
 
@@ -60,7 +67,14 @@ const getSingleUser = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (error) {
-    console.log(error);
+    res.status(500).json({
+      success: false,
+      massage: "User not found",
+      error: {
+        code: 404,
+        description: "User not found!",
+      },
+    });
   }
 };
 
@@ -78,7 +92,14 @@ const deleteSingleUser = async (req: Request, res: Response) => {
       data: null,
     });
   } catch (error) {
-    console.log(error);
+    res.status(500).json({
+      success: false,
+      massage: "User not found",
+      error: {
+        code: 404,
+        description: "User not found!",
+      },
+    });
   }
 };
 
