@@ -82,9 +82,44 @@ const deleteSingleUser = async (req: Request, res: Response) => {
   }
 };
 
+const updateUser = async (req: Request, res: Response) => {
+  try {
+    const user = req.body;
+    //User vaildation using Zod
+
+    const zodParseData = userVaildationSchema.parse(user);
+
+    //Calling Createuser Service
+    const result = await UserServices.updateSingleUser(
+      zodParseData.userId,
+      zodParseData
+    );
+    const userId = zodParseData.userId;
+
+    //Get a user data
+    const userResult = await UserServices.getSingleUser(userId);
+    //send response
+
+    res.status(200).json({
+      success: true,
+      massage: "User updated successfully!",
+      data: userResult,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      massage: "User not found",
+      error: {
+        code: 404,
+        description: "User not found!",
+      },
+    });
+  }
+};
 export const UserControllers = {
   createUser,
   getAllUsers,
   getSingleUser,
   deleteSingleUser,
+  updateUser,
 };

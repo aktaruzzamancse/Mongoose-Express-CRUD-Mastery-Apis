@@ -32,10 +32,12 @@ const userVaildationSchema = z.object({
     required_error: "User Name is required",
     invalid_type_error: "User Name must be a string",
   }),
-  password: z.string({
-    required_error: "Password is required",
-    invalid_type_error: "Password must be a string",
-  }),
+  password: z
+    .string({
+      required_error: "Password is required",
+      invalid_type_error: "Password must be a string",
+    })
+    .max(20),
   fullName: fullNameVaildationSchema,
   age: z.number(),
   email: z.string().email({ message: "Invalid email address" }),

@@ -1,5 +1,7 @@
 import { Schema, model } from "mongoose";
 import { User, address, fullName } from "./user.interface";
+import bcrypt from "bcrypt";
+import config from "../../config";
 
 const fullNameSchema = new Schema<fullName>({
   firstName: {
@@ -46,6 +48,7 @@ const userSchema = new Schema<User>({
   password: {
     type: String,
     trim: true,
+    unique: true,
     required: [true, "Password is required"],
   },
   fullName: {
@@ -83,9 +86,20 @@ userSchema.pre("find", function (next) {
   this.find({ isDeleted: { $eq: false } });
   next();
 });
-
 userSchema.pre("findOne", function (next) {
   this.find({ isDeleted: { $eq: false } });
+  next();
+});
+
+userSchema.pre("save", async function (next) {
+  //hashing password and save in db
+
+  const user = this;
+
+  user.password = await bcrypt.hash(
+    user.password,
+    Number(config.bcrypt_salt_rounds)
+  );
   next();
 });
 export const UserModel = model<User>("User", userSchema);
