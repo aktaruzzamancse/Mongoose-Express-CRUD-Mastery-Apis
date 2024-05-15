@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "7445b1f1-20cd-4d48-9a56-7bb87ce917ed",
+		"name": "Mern Crud Apis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3437092"
+	},
+	"item": [
+		{
+			"name": "Retrieve a list of all users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": 11111,\n    \"username\": \"string\",\n    \"password\": \"string\",\n    \"fullName\": {\n        \"firstName\": \"string\",\n        \"lastName\": \"string\"\n    },\n    \"age\": 20,\n    \"email\": \"string\",\n    \"isActive\": true,\n    \"hobbies\": [\n        \"string\",\n        \"string\"\n    ],\n    \"address\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"country\": \"string\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:500/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "500",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": 99,\n    \"username\": \"aktar\",\n    \"password\": \"test12346!@#\",\n    \"fullName\": {\n        \"firstName\": \"Mohammad\",\n        \"lastName\": \"Aktaruzzaman Aktar\"\n    },\n    \"age\": 30,\n    \"email\": \"aktaruzzamancse@gmail.com\",\n    \"isActive\": true,\n    \"hobbies\": [\n        \"Programming\",\n        \"Travel\"\n    ],\n    \"address\": {\n        \"street\": \"Satkhira\",\n        \"city\": \"Satkhira\",\n        \"country\": \"Bangladesh\"\n    },\n    \"orders\": [\n            {\n                \"productName\": \"Product 1\",\n                \"price\": 23.56,\n                \"quantity\": 2\n            },\n            {\n                \"productName\": \"Product 2\",\n                \"price\": 23.56,\n                \"quantity\": 5\n            }\n        ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:500/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "500",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve a specific user by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:500/api/users/99",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "500",
+					"path": [
+						"api",
+						"users",
+						"99"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a user",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:500/api/users/99",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "500",
+					"path": [
+						"api",
+						"users",
+						"99"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a user",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": 99,\n    \"username\": \"aktar\",\n    \"password\": \"test12346!@#\",\n    \"fullName\": {\n        \"firstName\": \"Mohammad\",\n        \"lastName\": \"Aktaruzzaman Aktar\"\n    },\n    \"age\": 30,\n    \"email\": \"aktaruzzamancse@gmail.com\",\n    \"isActive\": true,\n    \"hobbies\": [\n        \"Programming\",\n        \"Travel\"\n    ],\n    \"address\": {\n        \"street\": \"Satkhira\",\n        \"city\": \"Satkhira\",\n        \"country\": \"Bangladesh\"\n    },\n    \"orders\": [\n            {\n                \"productName\": \"Product 1\",\n                \"price\": 23.56,\n                \"quantity\": 2\n            },\n            {\n                \"productName\": \"Product 2\",\n                \"price\": 23.56,\n                \"quantity\": 5\n            }\n        ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:500/api/users/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "500",
+					"path": [
+						"api",
+						"users",
+						"11"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

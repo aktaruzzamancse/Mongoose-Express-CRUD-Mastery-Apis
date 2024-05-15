@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { UserServices } from "./user.service";
-import { z } from "zod";
 import userVaildationSchema from "./user.zod.validation";
 
 const createUser = async (req: Request, res: Response) => {
@@ -55,7 +54,7 @@ const getAllUsers = async (req: Request, res: Response) => {
 
 const getSingleUser = async (req: Request, res: Response) => {
   try {
-    const { userId } = req.params;
+    const userId = parseInt(req.params.userId);
 
     //Calling getSingleUser Service
     const result = await UserServices.getSingleUser(userId);
@@ -80,7 +79,7 @@ const getSingleUser = async (req: Request, res: Response) => {
 
 const deleteSingleUser = async (req: Request, res: Response) => {
   try {
-    const { userId } = req.params;
+    const userId = parseInt(req.params.userId);
 
     //Calling getSingleUser Service
     const result = await UserServices.deleteSingleUser(userId);
