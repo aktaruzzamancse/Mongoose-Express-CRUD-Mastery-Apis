@@ -9,19 +9,12 @@
 <p><b>Environment variables</b></p>
 <p>This project depends on some environment variables. If you are running this project locally, create a .env file at the root for these variables. Your host provider should included a feature to set them there directly to avoid exposing them.</p>
 <p>Here are the required ones:</p>
-<div class="snippet-clipboard-content">
-    <pre class="notranslate">
-        <code>NODE_ENV=
-        PORT=
-        DATABASE_URL=
-        BCRYPT_SALT_ROUNDS=
-        </code>
-    </pre>
+<div><pre><code>NODE_ENV=
+PORT=
+DATABASE_URL=
+BCRYPT_SALT_ROUNDS=</code>
+</pre>
 </div>
 <p><b>Run the project</b></p>
 <p>Run the following command to run the project:</p>
-<div class="snippet-clipboard-content">
-    <pre class="notranslate">
-        <code>npm run start:dev</code>
-    </pre>
-</div>
+<div><pre><code>npm run start:dev</code></pre></div>
